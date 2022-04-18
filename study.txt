@@ -1,0 +1,183 @@
+dbms
+rdbms
+4 statements
+DDL- create, drop,truncate,alter,rename
+DML-select,insert,update,delete
+DCL
+TCL
+1. where clause =
+comparison operator - =,!=,<,>,<=,>=
+logical operator- and, or
+arithmatic  operator - +,-,*,/,%
+in and not in operator     (,,)
+between and not between   --and--
+like operator   -%
+2. order by=
+asc
+desc
+
+-=-----==------===-----
+delete =
+it is used to delete the data from table row by row
+cannot delete the structure
+delete table_name where col_name=condition
+
+
+drop =
+it is used to delete table data as well as table structure
+it is used to delete the database
+drop table table_name
+drop database database_name
+
+
+truncate =
+it is used to delete the records from the table.
+cannot delete the structure
+can not delete the data row by row
+truncate table table_name
+
+
+update=
+it is used to update column data or specific data if condition is provide
+update table_name set col_name=value where col_name =condition
+eg update info set loc = pune where name = rani;
+
+
+alter=
+alter is used to perform operation on columns
+by using alter we can add,delete,chage data type,increase decrese size of columns
+alter table table_name add col_name
+alter table table_name drop col col_name
+alter table table_name alter col col_name 
+
+
+aggregate functions
+min
+select min(salary) as new_sal from info
+
+max
+select max(salary) as new_sal from info
+
+sum
+select sum(salary) as newsal from info
+
+count
+select count(*) as newcount from info
+select count(loc) from info
+
+top
+select top 3 * from info
+select top 4 salary from info order by asc/desc
+
+avg
+select avg(salary) as avgsal from info
+
+distinct
+this function is used to find unique record from column
+select distinct (salary) from info
+select distinct (dept) from info
+select count(distinct(dept))from info
+
+
+constraints=
+
+primary key
+not null + unique
+used for numeric values for create table
+create table student (id int primary ke,---)
+
+not null
+if u define not nill constraint on col then u cant insert null value in it
+written on create table
+create table student ( ------, name varchar () not null,  age int not null)
+
+
+unique
+it ensures that all the values in colm should be unique or different value
+create table student (id int unique, name varchar(10) not null,-------)
+
+
+check key
+it ensures that all values in a colm satiosfies a specific condition
+it is just like a condition checking before inserting data into column
+eg. create table info ( id int, name varchar(10) not null unique,age int check( age >18))
+
+
+foreign key
+only connect with primary key
+null value allowed
+
+
+auto increment
+it will automatically insert or increment the unique value into table once u define the auto increment
+it will allow u to specify the range of values by which u want to create a unique values
+col_name identity(start, diff)
+eg. create table info( id int not null unique identity (1,1),name varchar(10), loc varchar(10));
+
+.
+
+default
+set default value to colm when value is not defined
+eg
+create table info(id int primary key, name varchar(10),city varchar(10),age int, loc varchar(10) default 'nashik');
+
+
+
+group by clause
+
+select col_name ,agg function(col_name) from table_name where col_name(condition) group by col_name
+eg. select dept, sum(salary)as deptsal from info group by dept
+
+select name,min(salary)  as newsal from info where age > 20 group by name
+
+
+q.ans.select top2 salary from info group by dept order by salary desc 
+
+
+having clause
+having clauseis added in sql because where clause not used with aggregate function
+select col_name,agg function(col_name) from table_name where col_name(condition) group by col_name having agg function (col_name)operator value
+eg.select department, sum(salary) from employee where sum(salary)  >70000 group by department having sum(salary) > 70000;
+
+to identify duplicate value
+select id,name,loc,dept,salary,count(*) from employee group by id,name,loc,dept,salary having count(*)>1;
+
+
+set operator
+
+union
+union all
+intersept
+except
+
+
+datetime
+select getdate();
+select getdate()-1;
+select getdate()+1;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
